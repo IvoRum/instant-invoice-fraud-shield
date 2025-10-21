@@ -1,0 +1,9 @@
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+COPY build/libs/volts-server-0.0.1-SNAPSHOT.jar /app/volts-server.jar
+
+EXPOSE 8081
+
+ENTRYPOINT ["java", "-jar", "gateway/app/volts-server.jar"]

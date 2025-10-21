@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  postgres-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: fraud_shield_db
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mysecretpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  gateway-service:
+    build: gateway_service
+    depends_on:
+      - postgres-db
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:

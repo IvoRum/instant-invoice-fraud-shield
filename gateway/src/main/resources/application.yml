@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: gateway
+  app:
+    jwtSecret: s3cr37
+    jwtExpirationMs: 36000000000
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:5433/fraud_shield_db
+    username: myuser
+    password: mysecretpassword
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    enabled: true
+  flyway:
+    locations: classpath:db/init
+
+server:
+  port: 8081
